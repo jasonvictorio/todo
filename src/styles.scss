@@ -254,9 +254,9 @@ input {
 
 .task-enter {
   z-index: 10;
-  animation: slideIn 500ms ease-out;
+  animation: slideIn 200ms ease-out;
 }
 
 .task-leave {
-  animation: slideOut 500ms ease-out;
+  animation: slideOut 200ms ease-out;
 }
