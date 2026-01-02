@@ -1,1 +1,182 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+// css reset above ends here
+
+body {
+  margin: 0;
+  background-color: rgb(246 246 248);
+  min-height: 100vh;
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+main {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.header {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 8px;
+  font-weight: 900;
+}
+
+.date {
+  font-size: 18px;
+  color: rgb(100 116 139);
+}
+
+.status {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 12px 20px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.status-line-1 {
+  font-size: 12px;
+  color: rgb(148 163 184);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.status-line-2 {
+  font-size: 18px;
+  color: rgb(15 23 42);
+}
+
+.tasks-and-input {
+  background-color: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+}
+
+form {
+  padding: 32px;
+  border-bottom: 1px solid rgb(241 245 249);
+  background-color: rgb(248 250 252 / 0.5);
+  display: flex;
+  gap: 16px;
+}
+
+input {
+  background-color: rgb(241 245 249);
+  width: 100%;
+  height: 56px;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.add {
+  text-wrap: nowrap;
+  padding: 0 32px;
+  color: #fff;
+  background-color: rgb(43 108 238);
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px #2b6cee40, 0 4px 6px -4px #2b6cee40;
+}
+
+.tasks {
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.task {
+  display: flex;
+  padding: 16px;
+  flex-direction: row;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  border: 1px solid rgb(241 245 249);
+  align-items: center;
+  font-size: 18px;
+}
+
+.checkbox {
+  cursor: pointer;
+  color: rgb(229, 231, 235);
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgb(229, 231, 235);
+  border-radius: 100%;
+  margin-right: 12px;
+}
+
+.delete {
+  padding: 12px 24px;
+  margin-left: auto;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: rgb(148 163 184);
+  &:hover {
+    color: rgb(239 68 68);
+    background-color: rgb(254 242 242);
+  }
+
+  opacity: 0;
+  .task:hover & {
+    opacity: 1;
+  }
+}
+
+.task.completed {
+  background-color: rgb(248 250 252);
+  color: rgb(148 163 184);
+  opacity: 0.75;
+  border-color: transparent;
+  &:hover {
+    opacity: 1;
+  }
+
+  .checkbox {
+    border-color: transparent;
+    background-color: rgb(43 108 238);
+  }
+
+  .task-text {
+    text-decoration: line-through;
+  }
+}
+
+.empty {
+  padding: 38px;
+  text-align: center;
+  color: rgb(100 116 139);
+  font-weight: 600;
+}

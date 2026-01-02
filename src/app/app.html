@@ -1,29 +1,53 @@
-<h1>Todo app</h1>
+<main>
+  <div class="header">
+    <div>
+      <h1 class="title">My Tasks</h1>
+      <p class="date">{{ today | date: 'fullDate' }}</p>
+    </div>
+    <div class="status">
+      <p class="status-line-1">Progress</p>
+      <p class="status-line-2">
+        {{completeTasks.length}}/{{tasks.length}} Completed
+      </p>
+    </div>
+  </div>
 
-<form (submit)="addTask()">
-  <input 
-    [(ngModel)]="task" 
-    type="text" 
-    name="newTaskText" 
-    placeholder="Task at hand..."
-  >
-  <button type="submit">Add task</button>
-</form>
+  <div class="tasks-and-input">
+    <form (submit)="addTask()">
+      <input
+        [(ngModel)]="task"
+        name="task"
+        placeholder="What needs to be done?"
+        type="text"
+      />
+      <button
+        class="add"
+        type="submit"
+      >
+        Add Task
+      </button>
+    </form>
 
-<ul>
-  @for (task of incompleteTasks; track task.id) {
-    <li>
-      <button type="button" (click)="toggleTask(task)">Toggle</button>
-      <span>{{ task.text }}</span> 
-    </li>
-  }
-</ul> 
+    <div class="tasks">
+      @for(task of incompleteTasks; track task.id) {
+        <app-task-item
+          [task]="task"
+          (toggle)="toggleTask(task)"
+          (delete)="deleteTask(task)"
+        />
+      }
 
-<ul>
-  @for (task of completeTasks; track task.id) {
-    <li>
-      <button type="button" (click)="toggleTask(task)">Toggle</button>
-      <span>{{ task.text }}</span> 
-    </li>
-  }
-</ul>
+      @for(task of completeTasks; track task.id) {
+        <app-task-item
+          [task]="task"
+          (toggle)="toggleTask(task)"
+          (delete)="deleteTask(task)"
+        />
+      }
+
+      @if (tasks.length === 0) {
+        <p class="empty">No tasks yet. Add one above!</p>
+      }
+    </div>
+  </div>
+</main>
