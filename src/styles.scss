@@ -180,3 +180,52 @@ input {
   color: rgb(100 116 139);
   font-weight: 600;
 }
+
+@keyframes slideIn {
+  from {
+    height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    margin-bottom: -16px;
+  }
+  to {
+    height: 80px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-bottom: 0;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    height: 80px;
+    opacity: 1;
+    transform: translateX(0);
+    margin-bottom: 0;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+    transform: translateX(10px);
+    margin-bottom: -16px;
+  }
+}
+
+.task-enter,
+.task-leave {
+  position: relative;
+  & > * {
+    background-color: white;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.task-enter {
+  z-index: 10;
+  animation: slideIn 500ms ease-out;
+}
+
+.task-leave {
+  animation: slideOut 500ms ease-out;
+}

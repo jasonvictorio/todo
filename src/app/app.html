@@ -30,19 +30,29 @@
 
     <div class="tasks">
       @for(task of incompleteTasks; track task.id) {
-        <app-task-item
-          [task]="task"
-          (toggle)="toggleTask(task)"
-          (delete)="deleteTask(task)"
-        />
+        <div
+          [animate.enter]="'task-enter'"
+          [animate.leave]="'task-leave'"
+        >
+          <app-task-item
+            [task]="task"
+            (toggle)="toggleTask(task)"
+            (delete)="deleteTask(task)"
+          />
+        </div>
       }
 
       @for(task of completeTasks; track task.id) {
-        <app-task-item
-          [task]="task"
-          (toggle)="toggleTask(task)"
-          (delete)="deleteTask(task)"
-        />
+        <div
+          [animate.enter]="'task-enter'"
+          [animate.leave]="'task-leave'"
+        >
+          <app-task-item
+            [task]="task"
+            (toggle)="toggleTask(task)"
+            (delete)="deleteTask(task)"
+          />
+        </div>
       }
 
       @if (tasks.length === 0) {
